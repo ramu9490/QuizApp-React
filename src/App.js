@@ -1,23 +1,18 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Homepage from "./Homepage";
+import Questions from "./Questions";
+import Result from "./Result";
+import css from "./App.css"
 
 function App() {
+  const [data, setData] = useState("home");
+  const [score, setScore] = useState(0);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {data === "home" && <Homepage setData={setData} />}
+      {data === "quest" && <Questions setData={setData} score={score} setScore={setScore} />}
+      {data === "rest" && <Result score={score} />}
     </div>
   );
 }
